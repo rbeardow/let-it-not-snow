@@ -40,7 +40,7 @@ $(document).ready(function() {
 function letItNotSnow() {
   var h = document.location.hostname;
   if (h === "www.abc.net.au") {
-    $('.section-heading:contains("Sport")').parents('.page').remove();
+    $('.module-heading:contains("Sport")').parents('.page').remove();
     $('a[href*="/sport/"]').parent("li").remove();
     $('#abcNavSport, #n-sport').remove();
     $('.headlines em:contains("SPORT")').parent('a').parent('li').remove();
@@ -49,6 +49,7 @@ function letItNotSnow() {
     });
   } else if (h === "www.sbs.com.au") {
     $('#nav-sport').parent('li').remove();
+    $('.pane-bean-latest-articles-sport, .cycling, .football').remove();
     $('a[href*="/sport"]').parent('li').remove();
     $('a[href*="/sport"]').parent('div').parent('li').remove();
     $('a[href*="/sport"]').parent('h1').parent('div.bottom_line').remove();
@@ -60,11 +61,14 @@ function letItNotSnow() {
   } else if (h === "www.theaustralian.com.au") {
     $('.group-sport, .text-g-sport, .text-m-sport').remove();
     $('.sport-new-index').parent('li').remove();
-    $('a[href="http://www.foxsports.com.au/"]').parent('dd').remove();
+    $('a[href*="foxsports.com.au"]').parent('dd').remove();
     $('a[href="/archive/sport-old"]').parent('li').remove();
     $('a[href*="/sport/"]').parent('li').remove();
   } else if (h === "www.news.com.au") {
+    $('dd.nav-foxsports').remove();
     $('.nav-sport, .sport, .sport-index').remove();
+    $('.story-block.sectionref-more-sports, .story-block.sectionref-tennis').parent('.content-item').remove();
+    $('.text-g-nn-web-aus-open-scoreboard-group').remove();
   } else if (h === "www.theguardian.com") {
     $('a[href*="/sport"], a[href*="/football"]').parent('li').remove();
     $('a[href*="/sport"], a[href*="/football"]').parent('h3').parent('li').remove();
