@@ -55,6 +55,8 @@ function letItNotSnow() {
     $('a[href*="/sport"]').parent('h1').parent('div.bottom_line').remove();
     $('h4.footer:contains("Sport") + ul.footer').remove();
     $('h4.footer:contains("Sport")').remove();
+    $('.more-top-stories-title:contains("The World Game")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
+    $('.more-top-stories-title:contains("Cycling")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
   } else if (h === "www.theherald.com.au") {
     $('a[href*="/sport"]').parent('li').remove();
     $('a[href="/sport/local-sport/"]').parent('h3').parent('section').remove();

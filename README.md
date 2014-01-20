@@ -1,4 +1,4 @@
-let-it-not-snow
+Let It Not Snow
 ===============
 
-A userscript to remove sports "news" from Australian newspapers.
+A userscript to remove sports "news" from Australian news websites.
