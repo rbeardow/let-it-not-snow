@@ -66,9 +66,11 @@ function letItNotSnow() {
     $('a[href*="/sport/"]').parent('li').remove();
   } else if (h === "www.news.com.au") {
     $('dd.nav-foxsports').remove();
+    $('.brand-sportingpulse').parent('.content-item').remove();
     $('.nav-sport, .sport, .sport-index').remove();
     $('.story-block.sectionref-more-sports, .story-block.sectionref-tennis').parent('.content-item').remove();
     $('.text-g-nn-web-aus-open-scoreboard-group').remove();
+    $('a[href*="/sport"]').parent('li').remove();
   } else if (h === "www.theguardian.com") {
     $('a[href*="/sport"], a[href*="/football"]').parent('li').remove();
     $('a[href*="/sport"], a[href*="/football"]').parent('h3').parent('li').remove();
