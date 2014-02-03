@@ -85,8 +85,16 @@ function letItNotSnow() {
 
     $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"]').parent('dd').prev('dt').remove();
     $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"]').parent('li, section, article, dd').remove();
+    $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"]').parent('h3').parent('article').remove();
 
     $('h4:contains("AFL News"), h4:contains("Football"), h4:contains("League News"), h4:contains("Athletics")').parent('div').remove();
     $('span.kicker:contains("Sport")').parent('li').remove();
+    $('.cN-storyHeadlineLead h4:contains("Cricket")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Tennis")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Sport")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Soccer")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Basketball")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Cycling")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Horseracing")').parent().remove();
   }
 }
