@@ -4,6 +4,7 @@
 // @description   Removes sports "news" on Australian news websites.
 // @include       http://www.abc.net.au/*
 // @include       http://www.sbs.com.au/*
+// @include       http://cyclingcentralshop.com.au/*
 // @include       http://www.theaustralian.com.au/*
 // @include       http://www.news.com.au/*
 // @include       http://www.theherald.com.au/*
@@ -44,7 +45,7 @@ function letItNotSnow() {
     $('body').on('DOMNodeInserted', '#abcNavMenu', function(e) {
       $('#abcNavSport').remove();
     });
-  } else if (h === "www.sbs.com.au") {
+  } else if (h === "www.sbs.com.au" || h === "cyclingcentralshop.com.au") {
     $('#nav-sport').parent('li').remove();
     $('.pane-bean-latest-articles-sport, .cycling, .football').remove();
     $('a[href*="/sport"]').parent('li').remove();
