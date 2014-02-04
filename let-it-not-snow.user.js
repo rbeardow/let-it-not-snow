@@ -40,6 +40,7 @@ function letItNotSnow() {
   if (h === "www.abc.net.au") {
     $('.module-heading:contains("Sport")').parents('.page').remove();
     $('a[href*="/sport/"]').parent("li").remove();
+    $('a[href*="/sport/"]').parent("h2").parent('.section').parent('li').remove();
     $('#abcNavSport, #n-sport').remove();
     $('.headlines em:contains("SPORT")').parent('a').parent('li').remove();
     $('body').on('DOMNodeInserted', '#abcNavMenu', function(e) {
