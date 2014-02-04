@@ -7,12 +7,11 @@
 // @include       http://www.theaustralian.com.au/*
 // @include       http://www.news.com.au/*
 // @include       http://www.theherald.com.au/*
-// @include       http://www.smh.com.au/*
-// @include       http://www.canberratimes.com.au/*
-// @include       http://www.theage.com.au/*
-// @include       http://www.watoday.com.au/*
-// @include       http://www.brisbanetimes.com.au/*
-// @include       http://www.watoday.com.au/*
+// @include       http://*.smh.com.au/*
+// @include       http://*.canberratimes.com.au/*
+// @include       http://*.theage.com.au/*
+// @include       http://*.watoday.com.au/*
+// @include       http://*.brisbanetimes.com.au/*
 // @include       http://www.theguardian.com/*
 // @grant         none
 // ==/UserScript==
@@ -96,5 +95,8 @@ function letItNotSnow() {
     $('.cN-storyHeadlineLead h4:contains("Basketball")').parent().remove();
     $('.cN-storyHeadlineLead h4:contains("Cycling")').parent().remove();
     $('.cN-storyHeadlineLead h4:contains("Horseracing")').parent().remove();
+
+    // Fairfax media subdomains.
+    $('a:contains("Sport")').parents('div.cN-groupNavigator').remove();
   }
 }
