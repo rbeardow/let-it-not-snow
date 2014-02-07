@@ -80,6 +80,8 @@ function letItNotSnow() {
     $('.sport').remove();
   } else {
     // Fairfax.
+    $('span.kicker:contains("SPORT")').parent('article').remove();
+
     $('#Sport ~ .col').remove();
     $('#Sport, .sport, .live-cricket, .rugbyleague, .rugbyunion').remove();
 
