@@ -39,7 +39,8 @@ function letItNotSnow() {
   var h = document.location.hostname;
   if (h === "www.abc.net.au") {
     $('.module-heading:contains("Sport")').parents('.page').remove();
-    $('a[href*="/sport/"]').parent("li").remove();
+    $('a[href*="/sport/"], .sport').parent('li').remove();
+    $('a[rel="tag"][href*="/sport/"]').closest('li').remove();
     $('a[href*="/sport/"]').parent("h2").parent('.section').parent('li').remove();
     $('#abcNavSport, #n-sport').remove();
     $('.headlines em:contains("SPORT")').parent('a').parent('li').remove();
@@ -73,6 +74,7 @@ function letItNotSnow() {
     $('.story-block.sectionref-more-sports, .story-block.sectionref-tennis').parent('.content-item').remove();
     $('.text-g-nn-web-aus-open-scoreboard-group').remove();
     $('a[href*="/sport"]').parent('li').remove();
+    $('.feature-foxsports, a[href*="/sport"], a[href*="foxsports"]').closest('.module').remove();
   } else if (h === "www.theguardian.com") {
     $('a[href*="/sport"], a[href*="/football"]').parent('li').remove();
     $('a[href*="/sport"], a[href*="/football"]').parent('h3').parent('li').remove();
