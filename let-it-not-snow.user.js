@@ -98,6 +98,13 @@ function letItNotSnow() {
     $('.cN-storyHeadlineLead h4:contains("Basketball")').parent().remove();
     $('.cN-storyHeadlineLead h4:contains("Cycling")').parent().remove();
     $('.cN-storyHeadlineLead h4:contains("Horseracing")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("AFL")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("League Match Report")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Commonwealth Games")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Rugby League")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Union News")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("World Cup")').parent().remove();
+    $('.cN-storyHeadlineLead h4:contains("Swimming")').parent().remove();
 
     // Fairfax media subdomains.
     $('a:contains("Sport")').parents('div.cN-groupNavigator').remove();
