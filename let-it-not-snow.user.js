@@ -85,9 +85,9 @@ function letItNotSnow() {
     $('span.kicker:contains("SPORT")').parent('article').remove();
 
     $('#Sport ~ .col').remove();
-    $('#Sport, .sport, .live-cricket, .rugbyleague, .rugbyunion, .fifaworldcup2014, .commonwealthgamesglasgow2014').remove();
+    $('#Sport, .sport, .live-cricket, .rugbyleague, .rugbyunion, .commonwealthgamesglasgow2014').remove();
 
-    var junk = $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"], a[href*="ultimate-league"], a[href*="/fifa-world-cup"], a[href*="/commonwealth-games"]');
+    var junk = $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"], a[href*="ultimate-league"], a[href*="/commonwealth-games"]');
     junk.parent('dd').prev('dt').remove();
     junk.parent('li, section, article, dd, p').remove();
     junk.parent('h3').parent('article, .cN-storyHeadlineLead').remove();
