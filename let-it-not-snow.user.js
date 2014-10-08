@@ -27,19 +27,26 @@
 
 this.$ = jQuery.noConflict(true);
 
+var h = document.location.hostname;
+
 letItNotSnow();
 
 // Fairfax.
 $('.most-read-tabs').bind('DOMNodeInserted', function() {
-    letItNotSnow();
+  letItNotSnow();
 });
+
+if (h === "www.theherald.com.au") {
+  $('.mega-menu-container').bind('DOMNodeInserted', function() {
+    letItNotSnow();
+  });
+}
 
 $(document).ready(function() {
   letItNotSnow();
 });
 
 function letItNotSnow() {
-  var h = document.location.hostname;
   if (h === "www.abc.net.au") {
     $('.module-heading:contains("Sport")').parents('.page').remove();
     $('a[href*="/sport/"], .sport').parent('li').remove();
@@ -52,7 +59,7 @@ function letItNotSnow() {
     });
   } else if (h === "www.sbs.com.au" || h === "cyclingcentralshop.com.au") {
     $('#nav-sport').parent('li').remove();
-    $('.pane-bean-latest-articles-sport, .cycling, .football').remove();
+    $('.lazy-delta-latest-articles-sport, .cycling, .football').remove();
     $('a[href*="/sport"]').parent('li').remove();
     $('a[href*="/sport"]').parent('div').parent('li').remove();
     $('a[href*="/sport"]').parent('h1').parent('div.bottom_line').remove();
@@ -63,7 +70,10 @@ function letItNotSnow() {
     $('div.genre.Sports').parents('.views-row').remove();
   } else if (h === "www.theherald.com.au") {
     $('a[href*="/sport"]').parent('li').remove();
-    $('a[href="/sport/local-sport/"]').parent('h3').parent('section').remove();
+    $('a[href*="/sport/tipping-comp/"]').parent('h5').parent('div').remove();
+    var localSportHeader = $('a[href="/sport/local-sport/"]').parent('h3').parent('div.section-wrapper');
+    localSportHeader.next('section').remove();
+    localSportHeader.remove();
   } else if (h === "www.theaustralian.com.au") {
     $('.group-sport, .text-g-sport, .text-m-sport').remove();
     $('.sport-new-index').parent('li').remove();
@@ -89,6 +99,7 @@ function letItNotSnow() {
 
     $('#Sport ~ .col').remove();
     $('#Sport, .sport, .live-cricket, .rugbyleague, .rugbyunion').remove();
+    $('section.leaguehq').remove();
 
     var junk = $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"], a[href*="ultimate-league"]');
     junk.parent('dd').prev('dt').remove();
