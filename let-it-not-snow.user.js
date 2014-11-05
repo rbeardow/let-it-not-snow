@@ -53,7 +53,7 @@ function letItNotSnow() {
     $('a[rel="tag"][href*="/sport/"]').closest('li').remove();
     $('a[href*="/sport/"]').parent("h2").parent('.section').parent('li').remove();
     $('#abcNavSport, #n-sport').remove();
-    $('.headlines em:contains("SPORT")').parent('a').parent('li').remove();
+    $('ul.headlines em:contains("SPORT")').closest('li').remove();
     $('body').on('DOMNodeInserted', '#abcNavMenu', function() {
       $('#abcNavSport').remove();
     });
