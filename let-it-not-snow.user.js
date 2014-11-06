@@ -68,6 +68,12 @@ function letItNotSnow() {
     $('.more-top-stories-title:contains("The World Game")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
     $('.more-top-stories-title:contains("Cycling")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
     $('div.genre.Sport').parents('.views-row').remove();
+
+    // http://www.sbs.com.au/ondemand/
+    $('a.vod_menu_item.news-and-sport').text('News');
+    $('#vod_menu').bind('DOMNodeInserted', function() {
+      $('div.meta span.genre:contains("Sport")').closest('li.cell').remove();
+    });
   } else if (h === "www.theherald.com.au") {
     $('a[href*="/sport"]').parent('li').remove();
     $('a[href*="/sport/tipping-comp/"]').parent('h5').parent('div').remove();
