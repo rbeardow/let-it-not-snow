@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 function letItNotSnow() {
   if (h === "www.abc.net.au") {
-    $('.module-heading:contains("Sport")').parents('.page').remove();
+    $('.module-heading a:contains("Sport")').parents('.inline-content').remove();
     $('a[href*="/sport/"], .sport').parent('li').remove();
     $('a[rel="tag"][href*="/sport/"]').closest('li').remove();
     $('a[href*="/sport/"]').parent("h2").parent('.section').parent('li').remove();
