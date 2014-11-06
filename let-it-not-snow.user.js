@@ -57,6 +57,9 @@ function letItNotSnow() {
     $('body').on('DOMNodeInserted', '#abcNavMenu', function() {
       $('#abcNavSport').remove();
     });
+
+    // http://www.abc.net.au/services/blogs/
+    $('a[href="programs.htm#Sport"], a[href="programs.htm#sport"]').parent('li').remove();
   } else if (h === "www.sbs.com.au" || h === "cyclingcentralshop.com.au") {
     $('#nav-sport').parent('li').remove();
     $('.lazy-delta-latest-articles-sport, .cycling, .football').remove();
