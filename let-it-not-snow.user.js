@@ -67,7 +67,7 @@ function letItNotSnow() {
     $('h4.footer:contains("Sport")').remove();
     $('.more-top-stories-title:contains("The World Game")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
     $('.more-top-stories-title:contains("Cycling")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
-    $('div.genre.Sports').parents('.views-row').remove();
+    $('div.genre.Sport').parents('.views-row').remove();
   } else if (h === "www.theherald.com.au") {
     $('a[href*="/sport"]').parent('li').remove();
     $('a[href*="/sport/tipping-comp/"]').parent('h5').parent('div').remove();
