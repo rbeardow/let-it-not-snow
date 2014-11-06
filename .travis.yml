@@ -1,4 +1,5 @@
 language: node_js
-install: npm install jshint -g
+install: npm install eslint jshint -g
 script:
 - jshint let-it-not-snow.user.js
+- eslint let-it-not-snow.user.js
