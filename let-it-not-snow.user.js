@@ -64,6 +64,9 @@ function letItNotSnow() {
     $('#vod_menu').bind('DOMNodeInserted', function() {
       $('div.meta span.genre:contains("Sport")').closest('li.cell').remove();
     });
+
+    // http://www.sbs.com.au/podcasts/
+    $('h2 span.l:contains("Sport")').closest('div.col').remove();
   } else if (h === "www.theherald.com.au") {
     $('a[href*="/sport"]').parent('li').remove();
     $('a[href*="/sport/tipping-comp/"]').parent('h5').parent('div').remove();
