@@ -87,6 +87,9 @@ function letItNotSnow() {
     $('.text-g-nn-web-aus-open-scoreboard-group').remove();
     $('a[href*="/sport"]').parent('li').remove();
     $('.feature-foxsports, a[href*="/sport"], a[href*="foxsports"]').closest('.module').remove();
+
+    // http://www.news.com.au/more-information/rss
+    $('a[href="http://feeds.news.com.au/public/rss/2.0/news_sport_3168.xml"]').parent('li').remove();
   } else if (h === "www.theguardian.com") {
     $('a[href*="/sport"], a[href*="/football"]').parent('li').remove();
     $('a[href*="/sport"], a[href*="/football"]').parent('h3').parent('li').remove();
