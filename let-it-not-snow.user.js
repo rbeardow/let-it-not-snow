@@ -30,6 +30,7 @@
 // @include       http://www.theguardian.com/*
 // @include       http://the-riotact.com/*
 // @include       http://*.aljazeera.com/*
+// @include       http://*.skynews.com.au/*
 // @grant         none
 // ==/UserScript==
 
@@ -233,6 +234,10 @@ function letItNotSnow() {
   } else if (h === "www.aljazeera.com") {
     $('a[href="/sport/"]').closest('td').remove();
     $('a[href="/sport"]').parent('li').remove();
+  } else if (h === "www.skynews.com.au") {
+    $('a[href*="sportsfan.com.au"]').closest('li, section').remove();
+    $('a[href*="afl.com.au"], a[href*="nrl.com"], a[href*="racingnetwork.com.au"]').closest('li').remove();
+    $('a[href="/sportsfan.html"]').closest('ul.main-categories-link, div.sn-footer-category').remove();
   }
 }
 
