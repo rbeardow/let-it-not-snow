@@ -128,6 +128,7 @@ function letItNotSnow() {
     $('ul.headlines em:contains("SPORT")').closest('li').remove();
     $('body').on('DOMNodeInserted', '#abcNavMenu', function() {
       $('#abcNavSport').remove();
+      $('a[href*="/sport/"]').parent('li').remove();
     });
     $('.sidebar h2 a[href="http://www.abc.net.au/sport"]').closest('.section').remove();
 
