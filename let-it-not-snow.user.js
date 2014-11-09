@@ -59,6 +59,9 @@ var isFairfax = h === "www.smh.com.au" ||
   h === "www.watoday.com.au" ||
   h === "www.brisbanetimes.com.au";
 
+// TODO: http://www.fairfax.com.au/local-news.html
+var isFairfaxRegional = h === "www.theherald.com.au";
+
 var isNewsCorp = h === "www.adelaidenow.com.au" ||
   h === "www.couriermail.com.au" ||
   h === "www.dailytelegraph.com.au" ||
@@ -104,14 +107,24 @@ function sbs() {
   $('div.genre.Sport, h3:contains("The World Game")').parents('.views-row').remove();
   $('#footer a[href="http://theworldgame.sbs.com.au/"]').parent('li').remove();
   $('a[href*="theworldgame.sbs.com.au"]').closest('div.tile, div.node').remove();
+
   // http://www.sbs.com.au/ondemand/
   $('a.vod_menu_item.news-and-sport').text('News');
   $('#vod_menu').bind('DOMNodeInserted', function() {
     $('div.meta span.genre:contains("Sport")').closest('li.cell').remove();
+
+    $('li.hasChildren:contains("NITV Sports")').remove();
+    var sportLi = $('ul#vod_menu_navigation_children li.heading:contains("Sports")');
+    sportLi.nextAll().remove();
+    sportLi.remove();
   });
 
   // http://www.sbs.com.au/podcasts/
   $('h2 span.l:contains("Sport")').closest('div.col').remove();
+
+  // http://www.sbs.com.au/shop/
+  $('a[href="/shop/dvdscover/sortbygenres/genre/Sport"], a[href="/shop/bookscover/sortbygenres/genre/Sport"]').closest('li').remove();
+  $('a[href="/shop/dvds/sortbygenres/genre/Sport"]').closest('#best_sellers_container').remove();
 }
 
 function fairfax() {
@@ -148,6 +161,17 @@ function fairfax() {
   $('a:contains("Sport")').parents('div.cN-groupNavigator').remove();
 }
 
+function fairfaxRegional() {
+  "use strict";
+  var menuItem = $('a[href*="/sport"]').parent('li');
+  menuItem.next('.divider-vertical').remove();
+  menuItem.remove();
+  $('a[href*="/sport/tipping-comp/"]').parent('h5').parent('div').remove();
+  var localSportHeader = $('a[href="/sport/local-sport/"]').parent('h3').parent('div.section-wrapper');
+  localSportHeader.next('section').remove();
+  localSportHeader.remove();
+}
+
 function newsCorp() {
   "use strict";
   $('.sectionref-sport').closest('.content-item').remove();
@@ -174,12 +198,8 @@ function letItNotSnow() {
     abc();
   } else if (isSbs) {
     sbs();
-  } else if (h === "www.theherald.com.au") {
-    $('a[href*="/sport"]').parent('li').remove();
-    $('a[href*="/sport/tipping-comp/"]').parent('h5').parent('div').remove();
-    var localSportHeader = $('a[href="/sport/local-sport/"]').parent('h3').parent('div.section-wrapper');
-    localSportHeader.next('section').remove();
-    localSportHeader.remove();
+  } else if (isFairfaxRegional) {
+    fairfaxRegional();
   } else if (h === "www.theaustralian.com.au") {
     $('.group-sport, .text-g-sport, .text-m-sport').remove();
     $('.sport-new-index').parent('li').remove();
@@ -218,8 +238,8 @@ if (isFairfax) {
   });
 }
 
-if (h === "www.theherald.com.au") {
-  $('.mega-menu-container').bind('DOMNodeInserted', function() {
+if (isFairfaxRegional) {
+  $('#mega-menu-container').bind('DOMNodeInserted', function() {
     "use strict";
     letItNotSnow();
   });
