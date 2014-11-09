@@ -3,6 +3,8 @@
 // @namespace     http://danielnixon.org
 // @description   Removes sports "news" on Australian news websites.
 // @include       http://www.abc.net.au/*
+// @include       http://*.abccommercial.com/*
+// @include       http://*.abcmusic.com.au/*
 // @include       http://www.sbs.com.au/*
 // @include       http://cyclingcentralshop.com.au/*
 // @include       http://www.theaustralian.com.au/*
@@ -44,6 +46,13 @@ this.$ = jQuery.noConflict(true);
 
 var h = document.location.hostname;
 
+var isAbc = h === "www.abc.net.au" ||
+  h === "www.abccommercial.com" ||
+  h === "www.abcmusic.com.au";
+
+var isSbs = h === "www.sbs.com.au" ||
+  h === "cyclingcentralshop.com.au";
+
 var isFairfax = h === "www.smh.com.au" ||
   h === "www.canberratimes.com.au" ||
   h === "www.theage.com.au" ||
@@ -62,6 +71,48 @@ var isNewsCorp = h === "www.adelaidenow.com.au" ||
   h === "www.townsvillebulletin.com.au" ||
   h === "www.cairnspost.com.au" ||
   h === "www.weeklytimesnow.com.au";
+
+function abc() {
+  "use strict";
+  $('.module-heading a:contains("Sport")').parents('.inline-content').remove();
+  $('a[href*="/sport/"], .sport').parent('li').remove();
+  $('a[rel="tag"][href*="/sport/"]').closest('li').remove();
+  $('a[href*="/sport/"]').parent("h2").parent('.section').parent('li').remove();
+  $('#abcNavSport, #n-sport').remove();
+  $('ul.headlines em:contains("SPORT")').closest('li').remove();
+  $('body').on('DOMNodeInserted', '#abcNavMenu', function() {
+    $('#abcNavSport').remove();
+    $('a[href*="/sport/"]').parent('li').remove();
+  });
+  $('.sidebar h2 a[href="http://www.abc.net.au/sport"]').closest('.section').remove();
+
+  // http://www.abc.net.au/services/blogs/
+  $('a[href="programs.htm#Sport"], a[href="programs.htm#sport"]').parent('li').remove();
+}
+
+function sbs() {
+  "use strict";
+  $('#nav-sport').parent('li').remove();
+  $('.lazy-delta-latest-articles-sport, .cycling, .football').remove();
+  $('a[href*="/sport"]').parent('li').remove();
+  $('a[href*="/sport"]').parent('div').parent('li').remove();
+  $('a[href*="/sport"]').parent('h1').parent('div.bottom_line').remove();
+  $('h4.footer:contains("Sport") + ul.footer').remove();
+  $('h4.footer:contains("Sport"), option:contains("Sport")').remove();
+  $('.more-top-stories-title:contains("The World Game")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
+  $('.more-top-stories-title:contains("Cycling")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
+  $('div.genre.Sport, h3:contains("The World Game")').parents('.views-row').remove();
+  $('#footer a[href="http://theworldgame.sbs.com.au/"]').parent('li').remove();
+  $('a[href*="theworldgame.sbs.com.au"]').closest('div.tile, div.node').remove();
+  // http://www.sbs.com.au/ondemand/
+  $('a.vod_menu_item.news-and-sport').text('News');
+  $('#vod_menu').bind('DOMNodeInserted', function() {
+    $('div.meta span.genre:contains("Sport")').closest('li.cell').remove();
+  });
+
+  // http://www.sbs.com.au/podcasts/
+  $('h2 span.l:contains("Sport")').closest('div.col').remove();
+}
 
 function fairfax() {
   "use strict";
@@ -119,43 +170,10 @@ function newsCorp() {
 
 function letItNotSnow() {
   "use strict";
-  if (h === "www.abc.net.au") {
-    $('.module-heading a:contains("Sport")').parents('.inline-content').remove();
-    $('a[href*="/sport/"], .sport').parent('li').remove();
-    $('a[rel="tag"][href*="/sport/"]').closest('li').remove();
-    $('a[href*="/sport/"]').parent("h2").parent('.section').parent('li').remove();
-    $('#abcNavSport, #n-sport').remove();
-    $('ul.headlines em:contains("SPORT")').closest('li').remove();
-    $('body').on('DOMNodeInserted', '#abcNavMenu', function() {
-      $('#abcNavSport').remove();
-      $('a[href*="/sport/"]').parent('li').remove();
-    });
-    $('.sidebar h2 a[href="http://www.abc.net.au/sport"]').closest('.section').remove();
-
-    // http://www.abc.net.au/services/blogs/
-    $('a[href="programs.htm#Sport"], a[href="programs.htm#sport"]').parent('li').remove();
-  } else if (h === "www.sbs.com.au" || h === "cyclingcentralshop.com.au") {
-    $('#nav-sport').parent('li').remove();
-    $('.lazy-delta-latest-articles-sport, .cycling, .football').remove();
-    $('a[href*="/sport"]').parent('li').remove();
-    $('a[href*="/sport"]').parent('div').parent('li').remove();
-    $('a[href*="/sport"]').parent('h1').parent('div.bottom_line').remove();
-    $('h4.footer:contains("Sport") + ul.footer').remove();
-    $('h4.footer:contains("Sport")').remove();
-    $('.more-top-stories-title:contains("The World Game")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
-    $('.more-top-stories-title:contains("Cycling")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
-    $('div.genre.Sport').parents('.views-row').remove();
-    $('#footer a[href="http://theworldgame.sbs.com.au/"]').parent('li').remove();
-    $('a[href*="theworldgame.sbs.com.au"]').closest('div.tile, div.node').remove();
-
-    // http://www.sbs.com.au/ondemand/
-    $('a.vod_menu_item.news-and-sport').text('News');
-    $('#vod_menu').bind('DOMNodeInserted', function() {
-      $('div.meta span.genre:contains("Sport")').closest('li.cell').remove();
-    });
-
-    // http://www.sbs.com.au/podcasts/
-    $('h2 span.l:contains("Sport")').closest('div.col').remove();
+  if (isAbc) {
+    abc();
+  } else if (isSbs) {
+    sbs();
   } else if (h === "www.theherald.com.au") {
     $('a[href*="/sport"]').parent('li').remove();
     $('a[href*="/sport/tipping-comp/"]').parent('h5').parent('div').remove();
