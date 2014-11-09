@@ -29,6 +29,7 @@
 // @include       http://*.brisbanetimes.com.au/*
 // @include       http://www.theguardian.com/*
 // @include       http://the-riotact.com/*
+// @include       http://*.aljazeera.com/*
 // @grant         none
 // ==/UserScript==
 
@@ -229,6 +230,9 @@ function letItNotSnow() {
     fairfax();
   } else if (h === "the-riotact.com") {
     $('a[rel="Sport"]').remove();
+  } else if (h === "www.aljazeera.com") {
+    $('a[href="/sport/"]').closest('td').remove();
+    $('a[href="/sport"]').parent('li').remove();
   }
 }
 
