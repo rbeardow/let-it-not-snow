@@ -28,6 +28,7 @@
 // @include       http://*.watoday.com.au/*
 // @include       http://*.brisbanetimes.com.au/*
 // @include       http://www.theguardian.com/*
+// @include       http://the-riotact.com/*
 // @grant         none
 // ==/UserScript==
 
@@ -226,6 +227,8 @@ function letItNotSnow() {
     newsCorp();
   } else if (isFairfax) {
     fairfax();
+  } else if (h === "the-riotact.com") {
+    $('a[rel="Sport"]').remove();
   }
 }
 
