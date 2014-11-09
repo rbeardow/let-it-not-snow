@@ -44,6 +44,7 @@ function letItNotSnow() {
     $('body').on('DOMNodeInserted', '#abcNavMenu', function() {
       $('#abcNavSport').remove();
     });
+    $('.sidebar h2 a[href="http://www.abc.net.au/sport"]').closest('.section').remove();
 
     // http://www.abc.net.au/services/blogs/
     $('a[href="programs.htm#Sport"], a[href="programs.htm#sport"]').parent('li').remove();
