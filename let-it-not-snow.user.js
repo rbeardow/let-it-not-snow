@@ -59,6 +59,7 @@ function letItNotSnow() {
     $('.more-top-stories-title:contains("Cycling")').parent('.more-top-stories').parent('.entity').parent('.pane-content').parent('.panel-pane').remove();
     $('div.genre.Sport').parents('.views-row').remove();
     $('#footer a[href="http://theworldgame.sbs.com.au/"]').parent('li').remove();
+    $('a[href*="theworldgame.sbs.com.au"]').closest('div.tile, div.node').remove();
 
     // http://www.sbs.com.au/ondemand/
     $('a.vod_menu_item.news-and-sport').text('News');
