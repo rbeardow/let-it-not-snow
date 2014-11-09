@@ -12,6 +12,13 @@
 // @include       http://*.dailytelegraph.com.au/*
 // @include       http://*.heraldsun.com.au/*
 // @include       http://*.perthnow.com.au/*
+// @include       http://*.ntnews.com.au/*
+// @include       http://*.themercury.com.au/*
+// @include       http://*.geelongadvertiser.com.au/*
+// @include       http://*.goldcoastbulletin.com.au/*
+// @include       http://*.townsvillebulletin.com.au/*
+// @include       http://*.cairnspost.com.au/*
+// @include       http://*.weeklytimesnow.com.au/*
 // @include       http://www.theherald.com.au/*
 // @include       http://*.smh.com.au/*
 // @include       http://*.canberratimes.com.au/*
@@ -47,7 +54,14 @@ var isNewsCorp = h === "www.adelaidenow.com.au" ||
   h === "www.couriermail.com.au" ||
   h === "www.dailytelegraph.com.au" ||
   h === "www.heraldsun.com.au" ||
-  h === "www.perthnow.com.au";
+  h === "www.perthnow.com.au" ||
+  h === "www.ntnews.com.au" ||
+  h === "www.themercury.com.au" ||
+  h === "www.geelongadvertiser.com.au" ||
+  h === "www.goldcoastbulletin.com.au" ||
+  h === "www.townsvillebulletin.com.au" ||
+  h === "www.cairnspost.com.au" ||
+  h === "www.weeklytimesnow.com.au";
 
 function fairfax() {
   "use strict";
@@ -88,6 +102,8 @@ function newsCorp() {
   $('.sectionref-sport').closest('.content-item').remove();
   $('a[href*="/sport/"]').closest('.module').remove();
   $('a[href="/sport"]').parent('li').remove();
+  $('a[href*="www.foxsports.com.au"]').parent('dd').remove();
+  $('a[href*="www.foxsports.com.au"], a[href*="www.sportingpulse.com.au"]').parent('li').remove();
   var junk = [
     '.sectionref-sport',
     '.text-g-an-nn-web-group-sport-allsports-scorecentre-weekday',
