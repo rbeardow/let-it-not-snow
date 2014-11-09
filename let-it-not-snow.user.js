@@ -203,7 +203,7 @@ function letItNotSnow() {
   } else if (isFairfaxRegional) {
     fairfaxRegional();
   } else if (h === "www.theaustralian.com.au") {
-    $('.group-sport, .text-g-sport, .text-m-sport').remove();
+    $('.group-sport, .text-g-sport, .text-m-sport, .sectionref-sport').remove();
     $('.sport-new-index').parent('li').remove();
     $('a[href*="foxsports.com.au"]').parent('dd').remove();
     $('a[href="/archive/sport-old"]').parent('li').remove();
