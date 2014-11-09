@@ -7,6 +7,11 @@
 // @include       http://cyclingcentralshop.com.au/*
 // @include       http://www.theaustralian.com.au/*
 // @include       http://www.news.com.au/*
+// @include       http://*.adelaidenow.com.au/*
+// @include       http://*.couriermail.com.au/*
+// @include       http://*.dailytelegraph.com.au/*
+// @include       http://*.heraldsun.com.au/*
+// @include       http://*.perthnow.com.au/*
 // @include       http://www.theherald.com.au/*
 // @include       http://*.smh.com.au/*
 // @include       http://*.canberratimes.com.au/*
@@ -31,6 +36,70 @@
 this.$ = jQuery.noConflict(true);
 
 var h = document.location.hostname;
+
+var isFairfax = h === "www.smh.com.au" ||
+  h === "www.canberratimes.com.au" ||
+  h === "www.theage.com.au" ||
+  h === "www.watoday.com.au" ||
+  h === "www.brisbanetimes.com.au";
+
+var isNewsCorp = h === "www.adelaidenow.com.au" ||
+  h === "www.couriermail.com.au" ||
+  h === "www.dailytelegraph.com.au" ||
+  h === "www.heraldsun.com.au" ||
+  h === "www.perthnow.com.au";
+
+function fairfax() {
+  "use strict";
+  $('span.kicker:contains("SPORT")').parent('article').remove();
+
+  $('#Sport ~ .col').remove();
+  $('#Sport, .sport, .live-cricket, .rugbyleague, .rugbyunion').remove();
+  $('section.leaguehq').remove();
+
+  var junk = $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"], a[href*="ultimate-league"]');
+  junk.parent('dd').prev('dt').remove();
+  junk.parent('li, section, article, dd, p').remove();
+  junk.parent('h3').parent('article, .cN-storyHeadlineLead').remove();
+
+  $('h4:contains("AFL News"), h4:contains("Football"), h4:contains("League News"), h4:contains("Athletics")').parent('div').remove();
+  $('span.kicker:contains("Sport")').parent('li').remove();
+  $('.cN-storyHeadlineLead h4:contains("Cricket")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Tennis")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Sport")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Soccer")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Basketball")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Cycling")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Horseracing")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("AFL")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("League Match Report")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Commonwealth Games")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Rugby League")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Union News")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("World Cup")').parent().remove();
+  $('.cN-storyHeadlineLead h4:contains("Swimming")').parent().remove();
+
+  // Fairfax media subdomains.
+  $('a:contains("Sport")').parents('div.cN-groupNavigator').remove();
+}
+
+function newsCorp() {
+  "use strict";
+  $('.sectionref-sport').closest('.content-item').remove();
+  $('a[href*="/sport/"]').closest('.module').remove();
+  $('a[href="/sport"]').parent('li').remove();
+  var junk = [
+    '.sectionref-sport',
+    '.text-g-an-nn-web-group-sport-allsports-scorecentre-weekday',
+    '.text-g-cm-nn-web-group-sport-allsports-scorecentre',
+    '.text-g-nn-web-group-sport-allsports-scorecentre',
+    '.text-g-pn-nn-web-group-sport-allsports-scorecentre-weekday',
+    '.text-g-an-nn-web-group-mhp-home-afl-promos',
+    '.text-g-hs-nn-web-group-mhp-home-afl-promos',
+    '.text-g-hs-nn-web-group-mhp-home-afl-raffle'
+  ];
+  $(junk.join()).remove();
+}
 
 function letItNotSnow() {
   "use strict";
@@ -98,48 +167,21 @@ function letItNotSnow() {
     $('a[href*="/sport"], a[href*="/football"]').parent('h3').parent('li').remove();
     $('a[href*="/sport"]').parent('h2').parent('div').parent('div').parent('.component-wrapper').remove();
     $('.sport').remove();
-  } else {
-    // Fairfax.
-    $('span.kicker:contains("SPORT")').parent('article').remove();
-
-    $('#Sport ~ .col').remove();
-    $('#Sport, .sport, .live-cricket, .rugbyleague, .rugbyunion').remove();
-    $('section.leaguehq').remove();
-
-    var junk = $('a[href*="/sport"], a[href*="/afl"], a[href*="/rugby"], a[href*="/breaking-news-sport"], a[href*="ultimate-league"]');
-    junk.parent('dd').prev('dt').remove();
-    junk.parent('li, section, article, dd, p').remove();
-    junk.parent('h3').parent('article, .cN-storyHeadlineLead').remove();
-
-    $('h4:contains("AFL News"), h4:contains("Football"), h4:contains("League News"), h4:contains("Athletics")').parent('div').remove();
-    $('span.kicker:contains("Sport")').parent('li').remove();
-    $('.cN-storyHeadlineLead h4:contains("Cricket")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Tennis")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Sport")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Soccer")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Basketball")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Cycling")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Horseracing")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("AFL")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("League Match Report")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Commonwealth Games")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Rugby League")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Union News")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("World Cup")').parent().remove();
-    $('.cN-storyHeadlineLead h4:contains("Swimming")').parent().remove();
-
-    // Fairfax media subdomains.
-    $('a:contains("Sport")').parents('div.cN-groupNavigator').remove();
+  } else if (isNewsCorp) {
+    newsCorp();
+  } else if (isFairfax) {
+    fairfax();
   }
 }
 
 letItNotSnow();
 
-// Fairfax.
-$('.most-read-tabs').bind('DOMNodeInserted', function() {
-  "use strict";
-  letItNotSnow();
-});
+if (isFairfax) {
+  $('.most-read-tabs').bind('DOMNodeInserted', function() {
+    "use strict";
+    letItNotSnow();
+  });
+}
 
 if (h === "www.theherald.com.au") {
   $('.mega-menu-container').bind('DOMNodeInserted', function() {
