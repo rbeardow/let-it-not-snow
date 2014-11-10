@@ -94,6 +94,9 @@ function abc() {
 
   // http://www.abc.net.au/services/blogs/
   $('a[href="programs.htm#Sport"], a[href="programs.htm#sport"]').parent('li').remove();
+
+  // http://www.abc.net.au/heywire/
+  $('a[href*="tag=sport"]').parent('li').remove();
 }
 
 function sbs() {
