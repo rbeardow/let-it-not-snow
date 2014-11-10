@@ -81,7 +81,7 @@ var isNewsCorp = h === "www.adelaidenow.com.au" ||
 function abc() {
   "use strict";
   $('.module-heading a:contains("Sport")').parents('.inline-content').remove();
-  $('a[href*="/sport/"], .sport').parent('li').remove();
+  $('a[href*="/sport/"], a[href*="section=sport"], .sport').parent('li').remove();
   $('a[rel="tag"][href*="/sport/"]').closest('li').remove();
   $('a[href*="/sport/"]').parent("h2").parent('.section').parent('li').remove();
   $('#abcNavSport, #n-sport').remove();
