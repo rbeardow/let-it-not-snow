@@ -101,6 +101,7 @@ function abc() {
 
 function sbs() {
   "use strict";
+  document.title = document.title.replace(", sport", "");
   $('#nav-sport').parent('li').remove();
   $('.lazy-delta-latest-articles-sport, .cycling, .football').remove();
   $('a[href*="/sport"]').parent('li').remove();
