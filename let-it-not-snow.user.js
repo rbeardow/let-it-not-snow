@@ -231,6 +231,7 @@ function letItNotSnow() {
     fairfax();
   } else if (h === "the-riotact.com") {
     $('a[rel="Sport"]').remove();
+    $('div.catlink a[href="/category/sport"]').closest('div.common_news1').remove();
   } else if (h === "www.aljazeera.com") {
     $('a[href="/sport/"]').closest('td').remove();
     $('a[href="/sport"]').parent('li').remove();
