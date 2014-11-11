@@ -97,6 +97,9 @@ function abc() {
 
   // http://www.abc.net.au/heywire/
   $('a[href*="tag=sport"]').parent('li').remove();
+
+  // http://www.abc.net.au/news/feeds/rss/
+  $('a[href="/news/feed/45924/rss.xml"]').parent('li').remove();
 }
 
 function sbs() {
