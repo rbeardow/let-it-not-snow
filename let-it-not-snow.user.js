@@ -135,6 +135,10 @@ function sbs() {
   // http://www.sbs.com.au/shop/
   $('a[href="/shop/dvdscover/sortbygenres/genre/Sport"], a[href="/shop/bookscover/sortbygenres/genre/Sport"]').closest('li').remove();
   $('a[href="/shop/dvds/sortbygenres/genre/Sport"]').closest('#best_sellers_container').remove();
+
+  // http://www.sbs.com.au/search/?query=foo
+  $('.sport-li').remove();
+  $('span.category.sport').closest('li').remove();
 }
 
 function fairfax() {
