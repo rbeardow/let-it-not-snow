@@ -236,6 +236,9 @@ function letItNotSnow() {
     $('a[href*="/sport"], a[href*="/football"]').parent('h3').parent('li').remove();
     $('a[href*="/sport"]').parent('h2').parent('div').parent('div').parent('.component-wrapper').remove();
     $('.sport').remove();
+
+    // New layout
+    $('section#sport').remove();
   } else if (isNewsCorp) {
     newsCorp();
   } else if (isFairfax) {
