@@ -32,6 +32,7 @@
 // @include       http://*.aljazeera.com/*
 // @include       http://*.skynews.com.au/*
 // @include       https://*.news.yahoo.com/*
+// @include       http://*.9news.com.au/*
 // @include       http://tenplay.com.au/*
 // @include       http://*.tenplay.com.au/*
 // @include       https://*.reddit.com/r/australia/*
@@ -228,6 +229,9 @@ function letItNotSnow() {
     $('a[href*="foxsports.com.au"]').parent('dd').remove();
     $('a[href="/archive/sport-old"]').parent('li').remove();
     $('a[href*="/sport/"]').parent('li').remove();
+  } else if (h.contains("9news.com.au")) {
+    $('a[data-custom-link-name="Nav_Menu_MORE_Sport"]').remove();
+    $('li[data-section="sport"]').remove();
   } else if (h.contains("news.com.au")) {
     $('dd.nav-foxsports').remove();
     $('.brand-sportingpulse').parent('.content-item').remove();
