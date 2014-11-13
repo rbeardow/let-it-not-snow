@@ -82,6 +82,10 @@ var isNewsCorp = h.contains("adelaidenow.com.au") ||
   h.contains("cairnspost.com.au") ||
   h.contains("weeklytimesnow.com.au");
 
+var isChannelTen = h.contains('tenplay.com.au');
+
+// TODO: http://www.sunshinecoastdaily.com.au/apn-network/
+
 function abc() {
   "use strict";
   $('.module-heading a:contains("Sport")').parents('.inline-content').remove();
@@ -260,10 +264,11 @@ function letItNotSnow() {
   } else if (h.contains("news.yahoo.com")) {
     $('section[data-value="category_list_sport"]').remove();
     $('a[href="//au.sports.yahoo.com/"]').parent('li').remove();
-  } else if (h.contains("tenplay.com.au")) {
-    $('a[href*="/sport"]').parent('li').remove();
+  } else if (isChannelTen) {
+    $('a[href*="/sport"]').parent('li, article').remove();
     $('a[href="/browse-by-genre?genre=Sport"]').closest('ul').remove();
     $('section header h2:contains("Sport")').closest('section').remove();
+    $('#sub-navigation-items a:contains("Sport")').parent('li').remove();
   } else if (h.contains("reddit.com")) {
     $('.linkflair-sport').remove();
   }
@@ -280,6 +285,13 @@ if (isFairfax) {
 
 if (isFairfaxRegional) {
   $('#mega-menu-container').bind('DOMNodeInserted', function() {
+    "use strict";
+    letItNotSnow();
+  });
+}
+
+if (isChannelTen) {
+  $('#browse-results').bind('DOMNodeInserted', function() {
     "use strict";
     letItNotSnow();
   });
