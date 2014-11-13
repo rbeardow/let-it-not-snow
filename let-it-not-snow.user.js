@@ -32,6 +32,7 @@
 // @include       http://*.aljazeera.com/*
 // @include       http://*.skynews.com.au/*
 // @include       https://*.news.yahoo.com/*
+// @include       https://*.reddit.com/r/australia/*
 // @grant         none
 // ==/UserScript==
 
@@ -257,6 +258,8 @@ function letItNotSnow() {
   } else if (h.contains("news.yahoo.com")) {
     $('section[data-value="category_list_sport"]').remove();
     $('a[href="//au.sports.yahoo.com/"]').parent('li').remove();
+  } else if (h.contains("reddit.com")) {
+    $('.linkflair-sport').remove();
   }
 }
 
