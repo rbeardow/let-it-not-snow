@@ -31,7 +31,7 @@
 // @include       http://the-riotact.com/*
 // @include       http://*.aljazeera.com/*
 // @include       http://*.skynews.com.au/*
-// @include       https://au.news.yahoo.com/*
+// @include       https://*.news.yahoo.com/*
 // @grant         none
 // ==/UserScript==
 
@@ -254,7 +254,7 @@ function letItNotSnow() {
     $('a[href*="sportsfan.com.au"]').closest('li, section').remove();
     $('a[href*="afl.com.au"], a[href*="nrl.com"], a[href*="racingnetwork.com.au"]').closest('li').remove();
     $('a[href="/sportsfan.html"]').closest('ul.main-categories-link, div.sn-footer-category').remove();
-  } else if (h.contains("au.news.yahoo.com")) {
+  } else if (h.contains("news.yahoo.com")) {
     $('section[data-value="category_list_sport"]').remove();
     $('a[href="//au.sports.yahoo.com/"]').parent('li').remove();
   }
