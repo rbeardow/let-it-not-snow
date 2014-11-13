@@ -2,13 +2,13 @@
 // @name          Let It Not Snow
 // @namespace     http://danielnixon.org
 // @description   Removes sports "news" on Australian news websites.
-// @include       http://www.abc.net.au/*
+// @include       http://*.abc.net.au/*
 // @include       http://*.abccommercial.com/*
 // @include       http://*.abcmusic.com.au/*
-// @include       http://www.sbs.com.au/*
+// @include       http://*.sbs.com.au/*
 // @include       http://cyclingcentralshop.com.au/*
-// @include       http://www.theaustralian.com.au/*
-// @include       http://www.news.com.au/*
+// @include       http://*.theaustralian.com.au/*
+// @include       http://*.news.com.au/*
 // @include       http://*.adelaidenow.com.au/*
 // @include       http://*.couriermail.com.au/*
 // @include       http://*.dailytelegraph.com.au/*
@@ -21,13 +21,13 @@
 // @include       http://*.townsvillebulletin.com.au/*
 // @include       http://*.cairnspost.com.au/*
 // @include       http://*.weeklytimesnow.com.au/*
-// @include       http://www.theherald.com.au/*
+// @include       http://*.theherald.com.au/*
 // @include       http://*.smh.com.au/*
 // @include       http://*.canberratimes.com.au/*
 // @include       http://*.theage.com.au/*
 // @include       http://*.watoday.com.au/*
 // @include       http://*.brisbanetimes.com.au/*
-// @include       http://www.theguardian.com/*
+// @include       http://*.theguardian.com/*
 // @include       http://the-riotact.com/*
 // @include       http://*.aljazeera.com/*
 // @include       http://*.skynews.com.au/*
@@ -50,34 +50,34 @@ this.$ = jQuery.noConflict(true);
 
 var h = document.location.hostname;
 
-var isAbc = h === "www.abc.net.au" ||
-  h === "www.abccommercial.com" ||
-  h === "www.abcmusic.com.au";
+var isAbc = h.contains("abc.net.au") ||
+  h.contains("abccommercial.com") ||
+  h.contains("abcmusic.com.au");
 
-var isSbs = h === "www.sbs.com.au" ||
-  h === "cyclingcentralshop.com.au";
+var isSbs = h.contains("sbs.com.au") ||
+  h.contains("cyclingcentralshop.com.au");
 
-var isFairfax = h === "www.smh.com.au" ||
-  h === "www.canberratimes.com.au" ||
-  h === "www.theage.com.au" ||
-  h === "www.watoday.com.au" ||
-  h === "www.brisbanetimes.com.au";
+var isFairfax = h.contains("smh.com.au") ||
+  h.contains("canberratimes.com.au") ||
+  h.contains("theage.com.au") ||
+  h.contains("watoday.com.au") ||
+  h.contains("brisbanetimes.com.au");
 
 // TODO: http://www.fairfax.com.au/local-news.html
-var isFairfaxRegional = h === "www.theherald.com.au";
+var isFairfaxRegional = h.contains("theherald.com.au");
 
-var isNewsCorp = h === "www.adelaidenow.com.au" ||
-  h === "www.couriermail.com.au" ||
-  h === "www.dailytelegraph.com.au" ||
-  h === "www.heraldsun.com.au" ||
-  h === "www.perthnow.com.au" ||
-  h === "www.ntnews.com.au" ||
-  h === "www.themercury.com.au" ||
-  h === "www.geelongadvertiser.com.au" ||
-  h === "www.goldcoastbulletin.com.au" ||
-  h === "www.townsvillebulletin.com.au" ||
-  h === "www.cairnspost.com.au" ||
-  h === "www.weeklytimesnow.com.au";
+var isNewsCorp = h.contains("adelaidenow.com.au") ||
+  h.contains("couriermail.com.au") ||
+  h.contains("dailytelegraph.com.au") ||
+  h.contains("heraldsun.com.au") ||
+  h.contains("perthnow.com.au") ||
+  h.contains("ntnews.com.au") ||
+  h.contains("themercury.com.au") ||
+  h.contains("geelongadvertiser.com.au") ||
+  h.contains("goldcoastbulletin.com.au") ||
+  h.contains("townsvillebulletin.com.au") ||
+  h.contains("cairnspost.com.au") ||
+  h.contains("weeklytimesnow.com.au");
 
 function abc() {
   "use strict";
@@ -215,13 +215,13 @@ function letItNotSnow() {
     sbs();
   } else if (isFairfaxRegional) {
     fairfaxRegional();
-  } else if (h === "www.theaustralian.com.au") {
+  } else if (h.contains("theaustralian.com.au")) {
     $('.group-sport, .text-g-sport, .text-m-sport, .sectionref-sport').remove();
     $('.sport-new-index').parent('li').remove();
     $('a[href*="foxsports.com.au"]').parent('dd').remove();
     $('a[href="/archive/sport-old"]').parent('li').remove();
     $('a[href*="/sport/"]').parent('li').remove();
-  } else if (h === "www.news.com.au") {
+  } else if (h.contains("news.com.au")) {
     $('dd.nav-foxsports').remove();
     $('.brand-sportingpulse').parent('.content-item').remove();
     $('.nav-sport, .sport, .sport-index').remove();
@@ -232,7 +232,7 @@ function letItNotSnow() {
 
     // http://www.news.com.au/more-information/rss
     $('a[href="http://feeds.news.com.au/public/rss/2.0/news_sport_3168.xml"]').parent('li').remove();
-  } else if (h === "www.theguardian.com") {
+  } else if (h.contains("theguardian.com")) {
     $('a[href*="/sport"], a[href*="/football"]').parent('li').remove();
     $('a[href*="/sport"], a[href*="/football"]').parent('h3').parent('li').remove();
     $('a[href*="/sport"]').parent('h2').parent('div').parent('div').parent('.component-wrapper').remove();
@@ -244,17 +244,17 @@ function letItNotSnow() {
     newsCorp();
   } else if (isFairfax) {
     fairfax();
-  } else if (h === "the-riotact.com") {
+  } else if (h.contains("the-riotact.com")) {
     $('a[rel="Sport"]').remove();
     $('div.catlink a[href="/category/sport"]').closest('div.common_news1').remove();
-  } else if (h === "www.aljazeera.com") {
+  } else if (h.contains("aljazeera.com")) {
     $('a[href="/sport/"]').closest('td').remove();
     $('a[href="/sport"]').parent('li').remove();
-  } else if (h === "www.skynews.com.au") {
+  } else if (h.contains("skynews.com.au")) {
     $('a[href*="sportsfan.com.au"]').closest('li, section').remove();
     $('a[href*="afl.com.au"], a[href*="nrl.com"], a[href*="racingnetwork.com.au"]').closest('li').remove();
     $('a[href="/sportsfan.html"]').closest('ul.main-categories-link, div.sn-footer-category').remove();
-  } else if (h === "au.news.yahoo.com") {
+  } else if (h.contains("au.news.yahoo.com")) {
     $('section[data-value="category_list_sport"]').remove();
     $('a[href="//au.sports.yahoo.com/"]').parent('li').remove();
   }
