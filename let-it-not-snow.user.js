@@ -32,6 +32,8 @@
 // @include       http://*.aljazeera.com/*
 // @include       http://*.skynews.com.au/*
 // @include       https://*.news.yahoo.com/*
+// @include       http://tenplay.com.au/*
+// @include       http://*.tenplay.com.au/*
 // @include       https://*.reddit.com/r/australia/*
 // @grant         none
 // ==/UserScript==
@@ -258,6 +260,10 @@ function letItNotSnow() {
   } else if (h.contains("news.yahoo.com")) {
     $('section[data-value="category_list_sport"]').remove();
     $('a[href="//au.sports.yahoo.com/"]').parent('li').remove();
+  } else if (h.contains("tenplay.com.au")) {
+    $('a[href*="/sport"]').parent('li').remove();
+    $('a[href="/browse-by-genre?genre=Sport"]').closest('ul').remove();
+    $('section header h2:contains("Sport")').closest('section').remove();
   } else if (h.contains("reddit.com")) {
     $('.linkflair-sport').remove();
   }
